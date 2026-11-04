@@ -1,0 +1,10 @@
+{
+  "title": "Example Short",
+  "caption": "A short example video rendered from a hand-written storyboard.",
+  "hashtags": ["#example"],
+  "scenes": [
+    {"duration": 3, "media": null, "text": "Your hook goes here", "text_position": "center"},
+    {"duration": 3, "media": null, "text": "Add raw media per scene", "subtext": "image or clip via \"media\"", "text_position": "bottom"},
+    {"duration": 3, "media": null, "text": "Call to action", "subtext": "example.com", "text_position": "center"}
+  ]
+}

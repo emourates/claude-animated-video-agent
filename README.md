@@ -5,7 +5,9 @@ A starter Python project for generating short animated videos from a prompt, ren
 ## What this repo includes
 
 - Claude-powered script + storyboard generation via Anthropic API
-- Local MP4 rendering with Python + PIL + moviepy
+- Local MP4 rendering with Pillow + ffmpeg (ffmpeg must be installed)
+- Raw images and video clips per scene (`--media-dir`), with cover or blurred-contain framing
+- Hand-written storyboards (`--storyboard`) when no API key is available
 - Platform adapters for Instagram, TikTok, and YouTube Shorts
 - Environment-based configuration for API keys and credentials
 - A clean CLI you can extend for production automation
@@ -67,6 +69,31 @@ This will:
 - Render a short MP4 locally
 - Attempt to publish the video to the requested platforms
 - Save output in `output/`
+
+## Render from your own raw files
+
+Put images and clips in one folder and write a storyboard JSON next to them:
+
+```json
+{
+  "title": "My Short",
+  "caption": "Caption text",
+  "hashtags": ["#tag"],
+  "scenes": [
+    {"duration": 3, "media": "drone.mp4", "media_start": 0, "text": "Hook", "text_position": "bottom"},
+    {"duration": 3, "media": "house.png", "fit": "contain", "text": "Headline", "subtext": "Second line"},
+    {"duration": 3, "media": null, "text": "Call to action", "text_position": "center"}
+  ]
+}
+```
+
+```bash
+python -m app.main --storyboard media/storyboard.json --music media/track.m4a --dry-run
+```
+
+- `fit`: `cover` (default, fills 9:16) or `contain` (whole shot on a blurred background, good for landscape photos)
+- Stills get a slow push-in (`zoom`, default 0.08). Clips shorter than the scene loop.
+- With `--prompt` and `--media-dir`, Claude picks the media files itself (needs `ANTHROPIC_API_KEY`).
 
 ## Environment variables
 
