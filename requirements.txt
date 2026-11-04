@@ -1,7 +1,5 @@
 anthropic>=0.45.0
-moviepy>=1.0.3
 Pillow>=10.4.0
-numpy>=1.26.0
 python-dotenv>=1.0.1
 requests>=2.32.0
 google-api-python-client>=2.160.0

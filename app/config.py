@@ -6,10 +6,17 @@ load_dotenv()
 
 class Settings:
     ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+    ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-opus-5-5")
     OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR", "output")).resolve()
     DEFAULT_VIDEO_WIDTH = int(os.getenv("DEFAULT_VIDEO_WIDTH", "1080"))
     DEFAULT_VIDEO_HEIGHT = int(os.getenv("DEFAULT_VIDEO_HEIGHT", "1920"))
     DEFAULT_FPS = int(os.getenv("DEFAULT_FPS", "24"))
+
+    # Look of the text overlays (hex colours, optional .ttf font)
+    FONT_PATH = os.getenv("FONT_PATH", "")
+    BRAND_PRIMARY = os.getenv("BRAND_PRIMARY", "#006D77")
+    BRAND_ACCENT = os.getenv("BRAND_ACCENT", "#F5A623")
+    BRAND_BACKGROUND = os.getenv("BRAND_BACKGROUND", "#0B1114")
 
     INSTAGRAM_USERNAME = os.getenv("INSTAGRAM_USERNAME", "")
     INSTAGRAM_PASSWORD = os.getenv("INSTAGRAM_PASSWORD", "")
